@@ -1688,26 +1688,6 @@ function render_sankey(allNodes, allFlows, cfg, numberStyle) {
     .attr('font-family', cfg.labels_fontface)
     .attr('font-size', `${ep(cfg.labelname_size)}px`)
     .attr('fill', cfg.labels_color);
-  if (cfg.meta_mentionsankeymatic) {
-    // Style the mention appropriately given the size of the canvas/text:
-    const mSize = Math.max(12, cfg.labelname_size / 2, Math.cbrt(graph.h) + 3),
-      mMargin = Math.round(mSize / 2) - 1,
-      mColor
-       = cfg.bg_color === '#ffffff' ? '#336781'
-          : contrasting_gray_color(cfg.bg_color);
-    diagLabels.append('text')
-      // Anchor the text to the midpoint of the canvas (not the graph):
-      .attr('text-anchor', 'middle')
-      // x = graphW/2 is wrong when the L/R margins are uneven.. We
-      // have to use the whole width & adjust for the graph's transform:
-      .attr('x', ep(cfg.size_w / 2 - graph.final_margin_l))
-      .attr('y', ep(graph.h + cfg.margin_b - mMargin))
-      // Keep the current font, but make this small & grey:
-      .attr('font-size', `${ep(mSize)}px`)
-      .attr('font-weight', '400')
-      .attr('fill', mColor)
-      .text('Made at SankeyMATIC.com');
-  }
 
   if (!cfg.labels_hide && (cfg.labelname_appears || cfg.labelvalue_appears)) {
     // Add labels in a distinct layer on the top (so nodes can't block them)
@@ -1891,10 +1871,7 @@ function generateLink() {
 
 glob.saveDiagramToFile = () => {
   const verboseDiagramDef = getDiagramDefinition(true);
-  downloadATextFile(
-    verboseDiagramDef,
-    `sankeymatic_${glob.fileTimestamp()}_source.txt`
-  );
+  fetch("save.php", {method: "POST", body: JSON.stringify({ data: verboseDiagramDef })});
 };
 
 glob.loadDiagramFile = async () => {
@@ -2771,8 +2748,11 @@ glob.process_sankey = () => {
 // Debounced version of process_sankey as event handler for keystrokes:
 glob.debounced_process_sankey = debounce(glob.process_sankey);
 
-// Load a diagram definition from the URL if there was one:
-loadFromQueryString();
+// Load a diagram definition from the server
+glob.loadDiagramFile();
+
+
+
 // Render the present inputs:
 glob.process_sankey();
 }(typeof window === 'undefined' ? global : window));

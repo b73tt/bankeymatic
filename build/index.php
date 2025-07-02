@@ -53,7 +53,7 @@ Inputs<span id="input_options_hint">:</span></h2>
 
 <div id="input_options" class="text_center grid_sidebar_right">
 <div>
-    <textarea id="flows_in" title="Diagram Inputs" rows="29" cols="60" class="font_sans" onchange="process_sankey();" onkeyup="debounced_process_sankey();"><?php include("load.php");?></textarea>
+    <textarea id="flows_in" title="Diagram Inputs" rows="29" cols="60" class="font_sans" onchange="process_sankey();" onkeyup="debounced_process_sankey();"></textarea>
 </div>
 
 <div class="separated_stack">
@@ -66,13 +66,11 @@ Inputs<span id="input_options_hint">:</span></h2>
  title="Save the current diagram and settings to a local text file">Save my<br />work <strong>↘</strong></button>
 
 <p>
-<input type="file" id="load_diagram_from_file"
-  accept=".txt,.text,.skm,text/plain"
-  class="hidden_under"
-  onchange="loadDiagramFile(); return null;" />
-<label id="load_diagram_button" for="load_diagram_from_file" role="button"
- class="label_as_button loadsave_button"
- title="Load a diagram definition from a text file"><strong>↖</strong> Load<br />from file</label></p>
+<button
+  onclick="loadDiagramFile(); return false;" 
+id="load_diagram_button" 
+ class="loadsave_button"
+ title="Load a diagram definition from a text file"><strong>↖</strong> Load<br />from server</button>
 
 </div>
 </div>

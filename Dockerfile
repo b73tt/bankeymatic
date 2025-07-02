@@ -1,2 +1,0 @@
-FROM webdevops/php-nginx
-
