@@ -1,0 +1,11 @@
+services:
+  bankeymatic:
+    container_name: bankeymatic
+    hostname: bankeymatic
+    image: webdevops/php-nginx
+    ports:
+      - 8000:80/tcp
+    restart: unless-stopped
+    volumes:
+      - ./build:/app
+
