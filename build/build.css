@@ -450,6 +450,15 @@ span.toggleable:hover {
   cursor: pointer;
 }
 
+#conversion {
+  padding: 0.4em 0.5em;
+  background-color: var(--bg-light);
+  color: var(--deep-blue);
+  border: var(--border-base);
+  margin-top: 0.3em;
+  width: fit-content;
+}
+
 #imbalance_control {
   padding: 0.4em 0.5em;
   background-color: var(--bg-light);
@@ -1070,6 +1079,7 @@ fieldset.simple {
     "controls export"
     "controls size"
     "controls main"
+    "controls conversion"
     "controls about";
   grid-column-gap: var(--grid-gap);
 }
@@ -1083,6 +1093,7 @@ fieldset.simple {
 .diagram_export   { grid-area: export; }
 .diagram_main     { grid-area: main; }
 .diagram_about    { grid-area: about; }
+.conversion    { grid-area: conversion; }
 
 /* media query land */
 

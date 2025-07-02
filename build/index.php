@@ -11,6 +11,7 @@
 <script defer src="sankey.js"></script>
 <script defer src="lz-string.min.js"></script>
 <script defer src="sankeymatic.js"></script>
+<script defer src="bankeymatic.js"></script>
 </head>
 <body>
 <main>
@@ -114,8 +115,24 @@ id="load_diagram_button"
 <div id="imbalance_messages"></div>
 </div>
 </td></tr>
+<tr><td>
+<div id="conversion">
+<strong>Conversion</strong>
+<table>
+<tr><td>Daily</td><td><input id="conversion1" onclick="this.select()" onkeyup="convert(1)"/></td></tr>
+<tr><td>Weekly</td><td><input id="conversion7" onclick="this.select()" onkeyup="convert(7)"/></td></tr>
+<tr><td>Fortnightly</td><td><input id="conversion14" onclick="this.select()" onkeyup="convert(14)"/></td></tr>
+<tr><td>Monthly</td><td><input id="conversion30.5" onclick="this.select()" onkeyup="convert(30.5)"/></td></tr>
+<tr><td>Quarterly</td><td><input id="conversion91.3125" onclick="this.select()" onkeyup="convert(91.3125)"/></td></tr>
+<tr><td>Annually</td><td><input id="conversion365.25" onclick="this.select()" onkeyup="convert(365.25)"/></td></tr>
+
+</table>
+</div>
+</td></tr>
 </table>
 </div> <!-- diagram_about -->
+
+
 </div>
 <!-- LABELS -->
 
