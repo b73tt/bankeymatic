@@ -542,7 +542,7 @@ p.lastrow {
 
 .expandable_box {
   max-width: fit-content;
-  min-width: 30em;
+  min-width: 50em;
 }
 
 .form_chunk {

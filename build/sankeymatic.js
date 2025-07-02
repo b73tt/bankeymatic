@@ -1898,16 +1898,15 @@ glob.saveDiagramToFile = () => {
 };
 
 glob.loadDiagramFile = async () => {
-  const fileList = el('load_diagram_from_file').files;
-
-  // Did the user provide a file?
-  if (fileList.length === 0) { return; }
-
-  // Read the file's text contents:
-  const uploadedText = await fileList[0].text(),
-    userFileName = fileList[0].name;
-  setUpNewInputs(uploadedText, highlightSafeValue(userFileName));
+  var uploadedText;
+  fetch("load.php").then(res => res.text())
+  .then(data => {
+  uploadedText = data;
+  })
+  .then(() => {
+  setUpNewInputs(uploadedText, highlightSafeValue("saved"));
   glob.process_sankey();
+  });
 };
 
 // MARK dialog functions
@@ -2557,12 +2556,6 @@ glob.process_sankey = () => {
   const chartEl = el('chart');
   chartEl.style.height = `${approvedCfg.size_h}px`;
   chartEl.style.width = `${approvedCfg.size_w}px`;
-
-  // Also update the PNG download buttons' title text with these dimensions:
-  [1, 2, 4, 6].forEach((s) => {
-    el(`save_as_png_${s}x`).title
-      = `PNG image file: ${approvedCfg.size_w * s} x ${approvedCfg.size_h * s}`;
-  });
 
   // Mark as 'applied' any setting line which was successful.
   // (This will put the interactive UI component in charge.)
