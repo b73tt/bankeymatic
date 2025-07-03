@@ -5,8 +5,8 @@
 <meta name="viewport" content="initial-scale=1">
 <title>BankeyMATIC</title>
 <link rel="stylesheet" href="build.css">
-<script defer src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/canvg@3/lib/umd.js" crossorigin="anonymous"></script>
+<script defer src="d3.min.js"></script>
+<script defer src="umd.js"></script>
 <script defer src="constants.js"></script>
 <script defer src="sankey.js"></script>
 <script defer src="lz-string.min.js"></script>
